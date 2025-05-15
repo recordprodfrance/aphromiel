@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - AphroMiel.fr</title>
+    <style>
+        :root {
+            --primary-color: #D4AF37; /* Or/miel */
+            --secondary-color: #8B4513; /* Marron/miel foncé */
+            --accent-color: #FF6B6B; /* Rouge passion */
+            --text-color: #333;
+            --light-text-color: #fff;
+            --background-color: #FFF8E1; /* Beige très clair */
+            --card-background: #fff;
+            --border-color: #E8D9B5; /* Beige/miel clair */
+            --font-family: 'Georgia', serif; /* Police élégante */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            font-size: 16px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+            overflow: hidden;
+            padding: 0 20px;
+        }
+
+        header {
+            background: var(--card-background);
+            color: var(--text-color);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header #logo {
+            height: 60px;
+        }
+
+        header ul {
+            list-style: none;
+            display: flex;
+        }
+
+        header ul li {
+            margin-left: 20px;
+        }
+
+        header ul li a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        header ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Sections */
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--secondary-color);
+            font-weight: bold;
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--primary-color);
+            margin: 15px auto 0;
+        }
+
+        .page-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Contact Form Styles */
+        .contact-form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--card-background);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--primary-color);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+        }
+
+        .form-group input[type="email"],
+        .form-group input[type="text"],
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: var(--font-family);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input[type="email"]:focus,
+        .form-group input[type="text"]:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            font-family: var(--font-family);
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            color: var(--light-text-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .form-note {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 0.95rem;
+            color: var(--secondary-color);
+            font-style: italic;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-color);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 50px 0;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        footer ul li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        footer ul li a {
+            color: var(--light-text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 1.05rem;
+        }
+
+        footer ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header nav {
+                flex-direction: column;
+            }
+
+            header #logo {
+                margin-bottom: 15px;
+            }
+
+            header ul {
+                padding-top: 15px;
+            }
+
+            header ul li {
+                margin: 0 10px;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            .contact-form-container {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header ul li {
+                margin: 0 7px;
+                font-size: 0.9rem;
+            }
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo-link">
+                <img src="aphromiel_logo.png" alt="Logo AphroMiel.fr" id="logo">
+            </a>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="produits.html">Nos Produits</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="contact-page" class="container section-padding">
+            <h2>Contactez-Nous</h2>
+            <p class="page-intro">Une question sur nos produits ? Besoin d'informations complémentaires ? Ou simplement envie de partager votre expérience avec AphroMiel ? N'hésitez pas à nous écrire, notre équipe vous répondra dans les plus brefs délais.</p>
+            
+            <form id="contact-form" class="contact-form-container">
+                <div class="form-group">
+                    <label for="user-email">Votre Adresse E-mail (obligatoire)</label>
+                    <input type="email" id="user-email" name="user-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Objet</label>
+                    <input type="text" id="subject" name="subject">
+                </div>
+                <div class="form-group">
+                    <label for="message">Votre Message</label>
+                    <textarea id="message" name="message" rows="8" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Envoyer votre message</button>
+                <p class="form-note">En cliquant sur "Envoyer votre message", votre application de messagerie par défaut s'ouvrira avec les informations pré-remplies pour nous envoyer votre message.</p>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 AphroMiel.fr - Tous droits réservés.</p>
+            <p>Miel aphrodisiaque 100% naturel - Fabriqué en France</p>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="produits.html">Nos Produits</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prévient la soumission standard du formulaire
+            
+            const userEmail = document.getElementById('user-email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            if (!userEmail) {
+                alert('Veuillez entrer votre adresse e-mail.');
+                return;
+            }
+            
+            const mailtoLink = `mailto:recordprodfrance@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("Message de : " + userEmail + "\n\n" + message)}`;
+            
+            window.location.href = mailtoLink;
+        });
+    </script>
+</body>
+</html>

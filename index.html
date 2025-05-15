@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AphroMiel.fr - Miel aphrodisiaque naturel</title>
+    <style>
+        :root {
+            --primary-color: #D4AF37; /* Or/miel */
+            --secondary-color: #8B4513; /* Marron/miel foncé */
+            --accent-color: #FF6B6B; /* Rouge passion */
+            --text-color: #333;
+            --light-text-color: #fff;
+            --background-color: #FFF8E1; /* Beige très clair */
+            --card-background: #fff;
+            --border-color: #E8D9B5; /* Beige/miel clair */
+            --font-family: 'Georgia', serif; /* Police élégante */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            font-size: 16px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+            overflow: hidden;
+            padding: 0 20px;
+        }
+
+        header {
+            background: var(--card-background);
+            color: var(--text-color);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header #logo {
+            height: 60px;
+        }
+
+        header ul {
+            list-style: none;
+            display: flex;
+        }
+
+        header ul li {
+            margin-left: 20px;
+        }
+
+        header ul li a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        header ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(139, 69, 19, 0.7), rgba(139, 69, 19, 0.6)), url('ambiance.jpg') no-repeat center center/cover;
+            color: var(--light-text-color);
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--light-text-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Sections */
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--secondary-color);
+            font-weight: bold;
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--primary-color);
+            margin: 15px auto 0;
+        }
+
+        #about p {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            background-color: var(--card-background);
+            position: relative;
+        }
+
+        .benefits-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('ingredients.jpg') no-repeat center center/cover;
+            opacity: 0.05;
+            z-index: 0;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .benefit-item {
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .benefit-icon {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .benefit-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        .benefit-item p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* Products Preview Section */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .product-card {
+            background: var(--card-background);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--primary-color);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .product-card img {
+            max-width: 80%;
+            height: auto;
+            max-height: 250px;
+            object-fit: contain;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .product-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        .product-card p {
+            font-size: 1.05rem;
+            margin-bottom: 25px;
+            min-height: 80px;
+            line-height: 1.7;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            background: linear-gradient(rgba(139, 69, 19, 0.9), rgba(139, 69, 19, 0.8)), url('ambiance.jpg') no-repeat center center/cover;
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .testimonials-section h2 {
+            color: var(--light-text-color);
+        }
+
+        .testimonials-section h2::after {
+            background: var(--light-text-color);
+        }
+
+        .testimonial-item {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            position: relative;
+        }
+
+        .testimonial-item p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-item .author {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-color);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 50px 0;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        footer ul li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        footer ul li a {
+            color: var(--light-text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 1.05rem;
+        }
+
+        footer ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header nav {
+                flex-direction: column;
+            }
+
+            header #logo {
+                margin-bottom: 15px;
+            }
+
+            header ul {
+                padding-top: 15px;
+            }
+
+            header ul li {
+                margin: 0 10px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            .benefits-grid,
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-card p {
+                min-height: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header ul li {
+                margin: 0 7px;
+                font-size: 0.9rem;
+            }
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo-link">
+                <img src="aphromiel_logo.png" alt="Logo AphroMiel.fr" id="logo">
+            </a>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="produits.html">Nos Produits</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="container hero-content">
+                <h1>Réveillez vos instincts naturellement</h1>
+                <p>Découvrez AphroMiel, le miel aphrodisiaque 100% naturel qui stimule l'énergie et ravive la passion. Une expérience sensorielle unique pour des moments d'exception.</p>
+                <a href="produits.html" class="btn btn-primary">Découvrir Nos Produits</a>
+            </div>
+        </section>
+
+        <section id="about" class="container section-padding">
+            <h2>À Propos d'AphroMiel</h2>
+            <p>Chez AphroMiel, nous croyons au pouvoir des ingrédients naturels pour éveiller les sens et stimuler l'énergie vitale. Notre miel aphrodisiaque est élaboré selon des recettes ancestrales, combinant le miel pur avec des plantes aux vertus reconnues comme le maca, le gingembre et la graine de maniguette.</p>
+            <p>Chaque pot d'AphroMiel est le fruit d'un savoir-faire artisanal et d'une sélection rigoureuse des ingrédients, pour vous offrir un produit d'exception qui allie plaisir gustatif et bienfaits naturels. Notre mission : vous aider à redécouvrir l'harmonie du corps et de l'esprit, pour des moments de complicité inoubliables.</p>
+        </section>
+
+        <section id="benefits" class="section-padding benefits-section">
+            <div class="container">
+                <h2>Les Bienfaits d'AphroMiel</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <svg class="benefit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                        <h3>Stimule la Libido</h3>
+                        <p>Les ingrédients naturels d'AphroMiel sont reconnus pour leurs propriétés stimulantes qui favorisent le désir et l'énergie sexuelle.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <svg class="benefit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14"></path><path d="M2 20h20"></path><path d="M14 12v.01"></path></svg>
+                        <h3>100% Naturel</h3>
+                        <p>Sans additifs ni conservateurs, notre miel aphrodisiaque est composé uniquement d'ingrédients naturels soigneusement sélectionnés.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <svg class="benefit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                        <h3>Formats Pratiques</h3>
+                        <p>Disponible en pot de 150g ou en sticks individuels de 10g, AphroMiel s'adapte à votre style de vie et vous accompagne partout.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <svg class="benefit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.93 19.07A10 10 0 1 1 19.07 4.93 10 10 0 0 1 4.93 19.07zm0 0L2 22"></path><path d="M7.7 10.5c.4-.8 1.14-1.28 2.05-1.45.9-.17 1.83.05 2.5.6.57.45.95 1.08 1.06 1.8.1.71-.07 1.44-.5 2.05-.32.45-.84.8-1.62 1.1l-.34.12-.34.13c-.78.29-1.3.64-1.62 1.1-.43.6-.6 1.33-.5 2.05.11.7.5 1.35 1.06 1.8.67.54 1.6.76 2.5.6.91-.18 1.65-.64 2.05-1.45"></path><path d="M12 7v1"></path><path d="M12 16v1"></path></svg>
+                        <h3>Saveur Exquise</h3>
+                        <p>Un goût délicieusement équilibré entre la douceur du miel et les notes épicées des plantes aphrodisiaques, pour une expérience gustative unique.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="products-preview" class="container section-padding">
+            <h2>Nos Produits</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="aphromiel_pot.png" alt="AphroMiel Pot 150g">
+                    <h3>AphroMiel Pot 150g</h3>
+                    <p>Notre miel aphrodisiaque en pot de 150g, idéal pour une utilisation régulière. Un concentré de vitalité pour booster l'énergie et raviver la passion.</p>
+                    <a href="produits.html#pot" class="btn btn-secondary">En Savoir Plus</a>
+                </div>
+                <div class="product-card">
+                    <img src="aphromiel_stick.png" alt="AphroMiel Sticks Individuels">
+                    <h3>AphroMiel Sticks 10g</h3>
+                    <p>Nos sticks individuels de 10g, pratiques et discrets. Parfaits pour emporter partout avec vous et savourer à tout moment.</p>
+                    <a href="produits.html#sticks" class="btn btn-secondary">En Savoir Plus</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="testimonials-section">
+            <div class="container">
+                <h2>Ce Que Disent Nos Clients</h2>
+                <div class="testimonial-item">
+                    <p>"AphroMiel a transformé notre vie de couple. Ce produit naturel nous a permis de retrouver une complicité et une énergie que nous pensions perdues. Un véritable élixir de passion !"</p>
+                    <div class="author">Sophie et Marc, Paris</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 AphroMiel.fr - Tous droits réservés.</p>
+            <p>Miel aphrodisiaque 100% naturel - Fabriqué en France</p>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="produits.html">Nos Produits</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
